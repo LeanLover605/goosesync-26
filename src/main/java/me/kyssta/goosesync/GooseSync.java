@@ -121,7 +121,9 @@ public class GooseSync extends JavaPlugin {
                 return true;
             }
         }
-
+        if (serverVersion.startsWith("26_")) {
+			return true;
+		}
         // Not Paper, use standard version check (for Spigot, etc.)
         try {
             String[] parts = serverVersion.split("_");
@@ -132,6 +134,7 @@ public class GooseSync extends JavaPlugin {
             }
         } catch (NumberFormatException e) {
             // If we can't parse, assume compatibility
+            return true;
         }
         return true;
     }
